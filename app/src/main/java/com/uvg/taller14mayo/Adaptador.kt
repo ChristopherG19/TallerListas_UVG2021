@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_lista.view.*
 
-class Adaptador: RecyclerView.Adapter<Adaptador.ItemsViewHolder>(){
+class Adaptador(var items: MutableList<String>): RecyclerView.Adapter<Adaptador.ItemsViewHolder>(){
 
-    private var items: MutableList<String> = mutableListOf()
+    //private var items: MutableList<String> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_lista, parent, false)
