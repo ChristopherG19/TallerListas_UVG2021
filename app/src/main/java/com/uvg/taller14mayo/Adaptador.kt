@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_lista.view.*
 
 class Adaptador: RecyclerView.Adapter<Adaptador.ItemsViewHolder>(){
 
@@ -15,12 +16,17 @@ class Adaptador: RecyclerView.Adapter<Adaptador.ItemsViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ItemsViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val item = items[position]
+        holder.bind(item)
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    class ItemsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class ItemsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        fun bind(item:String) = with(itemView){
+            txtTitulo.text = item
+        }
+    }
 }
