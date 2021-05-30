@@ -2,12 +2,9 @@ package com.uvg.taller14mayo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import java.text.FieldPosition
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,12 +12,10 @@ class MainActivity : AppCompatActivity() {
     private val adaptador = Adaptador(
         { clickListener ->
             showItemClick(clickListener)
-        },
-        {
-            longClickListener ->
-            showItemClick(longClickListener)
         }
-    )
+    ) { longingListener ->
+        showItemLongClick(longingListener)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +39,15 @@ class MainActivity : AppCompatActivity() {
             adaptador.setItems(items)
             i++
         }
-
     }
 
     fun showItemClick(position: Int) {
-        val item = adaptador.getItem(position)
         Toast.makeText(this, "Eliminando...", Toast.LENGTH_SHORT).show()
         adaptador.RemoveItem(position)
+    }
+
+    fun showItemLongClick(position: Int) {
+        Toast.makeText(this, "Modificando...", Toast.LENGTH_SHORT).show()
+        adaptador.ChangeItem(position)
     }
 }
